@@ -28,6 +28,11 @@ std::tuple<Mat, Mat> load_camera_model(const std::string &path)
         return std::make_tuple(Mat(), Mat());
     }
 
+    if (json_data["camera_matrix"].size() < 9 || json_data["distortion_coefficients"].size() < 8) {
+        cerr << "Invalid camera matrix size" << endl;
+        return std::make_tuple(Mat(), Mat());
+    }
+
     // Camera matrix
     Eigen::Matrix<double, 3, 3> camera_matrix;
 
@@ -55,30 +60,32 @@ std::tuple<Mat, Mat> load_camera_model(const std::string &path)
     eigen2cv(camera_matrix, newCamMatrix);
     eigen2cv(camera_distortion, newDistCoefss);
 
+    file.close();
+
     return std::make_tuple(newCamMatrix, newDistCoefss);
 }
 
-vector<Point2f> reorderCorners(const vector<Point2f> *corners)
+vector<Point2f> reorderCorners(const vector<Point2f> &corners)
 {
     // reorder corners from aruco detection to be tl->tr->bl->br
     vector<Point2f> newCorners;
-    newCorners.push_back(corners->at(1));
-    newCorners.push_back(corners->at(0));
-    newCorners.push_back(corners->at(3));
-    newCorners.push_back(corners->at(2));
+    newCorners.push_back(corners.at(1));
+    newCorners.push_back(corners.at(0));
+    newCorners.push_back(corners.at(3));
+    newCorners.push_back(corners.at(2));
     return newCorners;
 }
 
-Pose3 tvecrvecToPose(const std::vector<double> *tvec, const std::vector<double> *rvec)
+Pose3 tvecrvecToPose(const std::vector<double> &tvec, const std::vector<double> &rvec)
 {
     // convert tvec and rvec from solvePnP to a Pose3 object
     Mat rotMatrix;
     Eigen::Matrix3d eigenMat;
-    Rodrigues(*rvec, rotMatrix);
+    Rodrigues(rvec, rotMatrix);
     cv2eigen(rotMatrix, eigenMat);
     Eigen::Quaterniond quat(eigenMat);
     Rot3 R(quat);
-    Point3 P(tvec->at(0), tvec->at(1), tvec->at(2));
+    Point3 P(tvec.at(0), tvec.at(1), tvec.at(2));
     return Pose3{R, P};
 }
 
@@ -95,13 +102,13 @@ std::tuple<Mat, Mat> poseTotvecrvec(const Pose3 *pose)
     return std::make_tuple(tvec, rvec);
 }
 
-void drawTag(Mat &frame, const Mat *rvec, const Mat *tvec, const Mat *cameraMatrix, const Mat *distCoeffs, const vector<Point3d> *singleObjectPoints, const vector<Point3d> *singleObjectPoints3d)
+void drawTag(Mat &frame, const Mat &rvec, const Mat &tvec, const Mat &cameraMatrix, const Mat &distCoeffs, const vector<Point3d> &singleObjectPoints, const vector<Point3d> &singleObjectPoints3d)
 {
     // overlay a 3d box on the frame based on the robot's calculated position
     vector<Point2d> imagePoints(4, Point2d(0.0, 0.0));
     vector<Point2d> imagePoints2(4, Point2d(0.0, 0.0));
-    projectPoints(*singleObjectPoints, *rvec, *tvec, *cameraMatrix, *distCoeffs, imagePoints);
-    projectPoints(*singleObjectPoints3d, *rvec, *tvec, *cameraMatrix, *distCoeffs, imagePoints2);
+    projectPoints(singleObjectPoints, rvec, tvec, cameraMatrix, distCoeffs, imagePoints);
+    projectPoints(singleObjectPoints3d, rvec, tvec, cameraMatrix, distCoeffs, imagePoints2);
     for (int i = 0; i < 4; i++)
     {
         if (i == 3)
@@ -118,18 +125,18 @@ void drawTag(Mat &frame, const Mat *rvec, const Mat *tvec, const Mat *cameraMatr
     }
 }
 
-void drawAxes(Mat &frame, Mat *rvec, Mat *tvec, Mat *cameraMatrix, Mat *distCoeffs)
+void drawAxes(Mat &frame, const Mat &rvec, const Mat &tvec, const Mat &cameraMatrix, const Mat &distCoeffs)
 {
     // draw axes of length 0.4 meters on the frame based on the robot's calculated position
     vector<Point2d> imagePoints(4, Point2d(0.0, 0.0));
     vector<Point3d> objectPoints = {Point3d(0, 0, 0), Point3d(0.4, 0, 0), Point3d(0, 0.4, 0), Point3d(0, 0, 0.4)};
-    projectPoints(objectPoints, *rvec, *tvec, *cameraMatrix, *distCoeffs, imagePoints);
+    projectPoints(objectPoints, rvec, tvec, cameraMatrix, distCoeffs, imagePoints);
     line(frame, imagePoints.at(0), imagePoints.at(1), Scalar(255, 0, 0), 5);
     line(frame, imagePoints.at(0), imagePoints.at(2), Scalar(0, 255, 0), 5);
     line(frame, imagePoints.at(0), imagePoints.at(3), Scalar(0, 0, 255), 5);
 }
 
-Pose3 tvecrvecToPoseNeg(std::vector<double> *tvec, std::vector<double> *rvec)
+Pose3 tvecrvecToPoseNeg(const std::vector<double> &tvec, const std::vector<double> &rvec)
 {
     // return the inverse of the transformation computed by solvePnP (robot to object -> object to robot)
     return tvecrvecToPose(tvec, rvec).inverse();
@@ -142,6 +149,10 @@ int main()
     std::string camModelPath = "test.json";
     std::string outputPath = "output.json";
     std::ofstream outputJson(outputPath);
+    if (!outputJson.is_open()) {
+        cerr << "Could not open output JSON file" << endl;
+        return -1;
+    }
     nlohmann::json outputData;
     outputData["samples"] = nlohmann::json::array();
     auto [cameraMatrix, distCoeffs] = load_camera_model(camModelPath);
@@ -201,11 +212,11 @@ int main()
             {
                 // add first landmark, create a prior on the original robot pose and the first landmark
                 int id = markerIds.at(0);
-                vector<Point2f> newCorners = reorderCorners(&markerCorners.at(0));
+                vector<Point2f> newCorners = reorderCorners(markerCorners.at(0));
                 Pose3 initialPose;
                 solvePnP(singleObjectPoints, newCorners, cameraMatrix, distCoeffs, rotationVectorOutput, translationVectorOutput, false);
                 tracker.addLandmark(id, &initialPose);
-                Pose3 tagToRobot = tvecrvecToPoseNeg(&translationVectorOutput, &rotationVectorOutput);
+                Pose3 tagToRobot = tvecrvecToPoseNeg(translationVectorOutput, rotationVectorOutput);
                 Pose3 robotPose = initialPose.transformPoseFrom(tagToRobot);
                 tracker.addInitialPoseEstimate(&robotPose);
                 tracker.addPrior(id, &robotPose);
@@ -222,7 +233,7 @@ int main()
                         {
                             objectPoints.push_back(point);
                         }
-                        vector<Point2f> newCorners = reorderCorners(&markerCorners.at(i));
+                        vector<Point2f> newCorners = reorderCorners(markerCorners.at(i));
                         singleImageMap.insert({markerIds.at(i), newCorners});
                         for (Point2d point : newCorners)
                         {
@@ -238,7 +249,7 @@ int main()
                         }
                         unknownCount++;
                         unknownId = markerIds.at(i);
-                        vector<Point2f> newCorners = reorderCorners(&markerCorners.at(i));
+                        vector<Point2f> newCorners = reorderCorners(markerCorners.at(i));
                         for (Point2d point : newCorners)
                         {
                             unknownImagePoints.push_back(point);
@@ -250,7 +261,7 @@ int main()
                     // tvec and rvec are the vectors transforming the robot to the "object" (in this case, the origin)
                     // calculate pose based on known markers to use as an initial estimate
                     solvePnP(objectPoints, imagePoints, cameraMatrix, distCoeffs, rotationVectorOutput, translationVectorOutput, false, SOLVEPNP_SQPNP);
-                    Pose3 robotPose = tvecrvecToPoseNeg(&translationVectorOutput, &rotationVectorOutput);
+                    Pose3 robotPose = tvecrvecToPoseNeg(translationVectorOutput, rotationVectorOutput);
                     tracker.addInitialPoseEstimate(&robotPose);
                     for (pair<int, vector<Point2f>> data : singleImageMap)
                     {
@@ -258,7 +269,7 @@ int main()
                         if (data.second.size() == 4)
                         {
                             solvePnP(singleObjectPoints, data.second, cameraMatrix, distCoeffs, rotationVectorOutput, translationVectorOutput, false, SOLVEPNP_IPPE_SQUARE);
-                            Pose3 robotToTag = tvecrvecToPose(&translationVectorOutput, &rotationVectorOutput);
+                            Pose3 robotToTag = tvecrvecToPose(translationVectorOutput, rotationVectorOutput);
                             tracker.addFactor(data.first, &robotToTag);
                         }
                     }
@@ -267,7 +278,7 @@ int main()
                     if (unknownCount > 0)
                     {
                         solvePnP(singleObjectPoints, unknownImagePoints, cameraMatrix, distCoeffs, rotationVectorOutput, translationVectorOutput, false, SOLVEPNP_IPPE_SQUARE);
-                        Pose3 robotToTag = tvecrvecToPose(&translationVectorOutput, &rotationVectorOutput);
+                        Pose3 robotToTag = tvecrvecToPose(translationVectorOutput, rotationVectorOutput);
                         Pose3 tagPose = tracker.getPose().transformPoseFrom(robotToTag);
                         tracker.addLandmark(unknownId, &tagPose);
                     }
@@ -281,7 +292,7 @@ int main()
         {
             Pose3 robotToTarget = tracker.getPose().transformPoseTo(target.second.getPose());
             auto [tvec, rvec] = poseTotvecrvec(&robotToTarget);
-            drawTag(viz, &rvec, &tvec, &cameraMatrix, &distCoeffs, &singleObjectPoints, &singleObjectPoints3d);
+            drawTag(viz, rvec, tvec, cameraMatrix, distCoeffs, singleObjectPoints, singleObjectPoints3d);
             tagJson["tags"][tagCount]["apriltagId"] = target.first;
             tagJson["tags"][tagCount]["apriltagX"] = target.second.getPose().x();
             tagJson["tags"][tagCount]["apriltagY"] = target.second.getPose().y();
@@ -290,7 +301,7 @@ int main()
         }
         Pose3 robotToOrigin = tracker.getPose().transformPoseTo(Pose3());
         auto [tvec2, rvec2] = poseTotvecrvec(&robotToOrigin);
-        drawAxes(viz, &rvec2, &tvec2, &cameraMatrix, &distCoeffs);
+        drawAxes(viz, rvec2, tvec2, cameraMatrix, distCoeffs);
         outputData["samples"][count]["robotPoseX"] = tracker.getPose().x();
         outputData["samples"][count]["robotPoseY"] = tracker.getPose().y();
         outputData["samples"][count]["robotPoseZ"] = tracker.getPose().z();
