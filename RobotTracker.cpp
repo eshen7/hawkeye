@@ -6,11 +6,11 @@
 
 RobotTracker::RobotTracker(double markerLengthMeters) : markerLengthMeters(markerLengthMeters), poseCount(0), params(ISAM2GaussNewtonParams(), 0.01, 1), isam(params), priorNoise(noiseModel::Diagonal::Sigmas(Vector6(0.1, 0.1, 0.1, 0.03, 0.03, 0.03))), tagNoise(noiseModel::Diagonal::Sigmas(Vector6(0.3, 0.3, 0.3, 0.1, 0.1, 0.1))), tagMap() {}
 
-void RobotTracker::addPrior(int firstTagId, const Pose3 *initialRobotPose)
+void RobotTracker::addPrior(int firstTagId, const Pose3 *initialRobotPose, const Pose3 *initialTagPose)
 {
     // create priors for the first recorded robot pose and first tag in sight in order to establish absolute position
     graph.push_back(PriorFactor<Pose3>(Symbol('p', poseCount), *initialRobotPose, priorNoise));
-    graph.push_back(PriorFactor<Pose3>(Symbol('l', firstTagId), Pose3(), priorNoise));
+    graph.push_back(PriorFactor<Pose3>(Symbol('l', firstTagId), *initialTagPose, priorNoise));
 }
 
 void RobotTracker::addLandmark(int id, const Pose3 *targetPose)

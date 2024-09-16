@@ -34,7 +34,7 @@ public:
     void addInitialPoseEstimate(const Pose3 *estimatedPose);
     void addOdoFactor(const Pose3 *odoPose);
     void addLandmark(int id, const Pose3 *targetPose);
-    void addPrior(int firstTargetId, const Pose3 *initialRobotPose);
+    void addPrior(int firstTargetId, const Pose3 *initialRobotPose, const Pose3 *initialTagPose);
     void addFactor(int targetId, const Pose3 *transform);
     void updateInformation();
     void reset();
