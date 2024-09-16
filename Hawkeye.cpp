@@ -12,7 +12,7 @@ using namespace std;
 using namespace gtsam;
 
 
-std::tuple<Mat, Mat> load_camera_model(const std::string &path)
+std::tuple<Mat, Mat> loadCameraModel(const std::string &path)
 {
     // read camera intrinsics from json
     std::ifstream file(path);
@@ -63,6 +63,33 @@ std::tuple<Mat, Mat> load_camera_model(const std::string &path)
     file.close();
 
     return std::make_tuple(newCamMatrix, newDistCoefss);
+}
+
+std::map<int, Pose3> loadTagMap(const std::string &path) {
+    // load known apriltag map
+    std::map<int, Pose3> tagMap;
+    std::ifstream file(path);
+    if (!file.is_open()) {
+        cerr << "Could not open file " << path << endl;
+        return tagMap;
+    }
+    nlohmann::json json_data;
+    try {
+        json_data = nlohmann::json::parse(file);
+    } catch (nlohmann::json::parse_error &e) {
+        cerr << "Error parsing JSON: " << e.what() << endl;
+        std::map<int, Pose3> map;
+        return tagMap;
+    }
+
+    for (nlohmann::json tag : json_data["tags"]) {
+        nlohmann::json translation = tag.at("pose").at("translation");
+        nlohmann::json rotation = tag.at("pose").at("rotation").at("quaternion");
+        Point3 point = Point3(translation.at("x"), translation.at("y"), translation.at("z"));
+        Rot3 rot = Rot3(Eigen::Quaterniond(rotation.at("W"), rotation.at("X"), rotation.at("Y"), rotation.at("Z")));
+        tagMap.insert({tag.at("ID"), Pose3(rot, point)});
+    }
+    return tagMap;
 }
 
 vector<Point2f> reorderCorners(const vector<Point2f> &corners)
@@ -148,6 +175,7 @@ int main()
     double markerLengthMeters = 0.1651;
     std::string camModelPath = "test.json";
     std::string outputPath = "output.json";
+    std::string tagMapPath = "2024-crescendo.json";
     std::ofstream outputJson(outputPath);
     if (!outputJson.is_open()) {
         cerr << "Could not open output JSON file" << endl;
@@ -155,7 +183,8 @@ int main()
     }
     nlohmann::json outputData;
     outputData["samples"] = nlohmann::json::array();
-    auto [cameraMatrix, distCoeffs] = load_camera_model(camModelPath);
+    auto [cameraMatrix, distCoeffs] = loadCameraModel(camModelPath);
+    map<int, Pose3> knownMap = loadTagMap(tagMapPath);
     vector<Point3d> singleObjectPoints = {
         Point3d(-markerLengthMeters / 2, markerLengthMeters / 2, 0),
         Point3d(markerLengthMeters / 2, markerLengthMeters / 2, 0),
@@ -213,13 +242,13 @@ int main()
                 // add first landmark, create a prior on the original robot pose and the first landmark
                 int id = markerIds.at(0);
                 vector<Point2f> newCorners = reorderCorners(markerCorners.at(0));
-                Pose3 initialPose;
+                const Pose3& initialTagPose = knownMap.at(id);
                 solvePnP(singleObjectPoints, newCorners, cameraMatrix, distCoeffs, rotationVectorOutput, translationVectorOutput, false);
-                tracker.addLandmark(id, &initialPose);
+                tracker.addLandmark(id, &initialTagPose);
                 Pose3 tagToRobot = tvecrvecToPoseNeg(translationVectorOutput, rotationVectorOutput);
-                Pose3 robotPose = initialPose.transformPoseFrom(tagToRobot);
+                Pose3 robotPose = initialTagPose.transformPoseFrom(tagToRobot);
                 tracker.addInitialPoseEstimate(&robotPose);
-                tracker.addPrior(id, &robotPose);
+                tracker.addPrior(id, &robotPose, &initialTagPose);
             }
             else
             {
