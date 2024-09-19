@@ -5,6 +5,6 @@ Hawkeye uses GTSAM to implement sensor fusion. iSAM (incremental smoothing and m
 ## CAN/NetworkTables (WIP)
 Hawkeye can operate as a Linux robot controller in order to calculate odometry data from CAN (Controller Area Network) devices onboard (only compatible with CTRE devices). The recommended hardware setup for FRC teams is to run Hawkeye on a Linux hardware platform such as a NVIDIA Jetson or Raspberry Pi with a CANivore on the same CAN bus as the drivetrain devices. Hawkeye pushes data over NetworkTables for use with the RoboRio or other coprocessors.
 ## Replay
-Hawkeye outputs all pose data per iteration to a JSON file that is replayable through scripts/visualize2.py for debugging and analysis purposes.
+Hawkeye outputs all pose data per iteration to a JSON file that is replayable through scripts/visualize2.py for debugging and analysis purposes.<br/>
 <img width="434" alt="Screenshot 2024-09-19 at 5 16 15 PM" src="https://github.com/user-attachments/assets/5633943b-2779-4198-99dc-5ad93ace02f1">
 ## Usage (WIP)
