@@ -53,10 +53,10 @@ RM = /opt/homebrew/Cellar/cmake/3.30.2/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/edisonshen/Documents/hawkeye
+CMAKE_SOURCE_DIR = /Users/edisonshen/documents/hawkeye
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/edisonshen/Documents/hawkeye/build
+CMAKE_BINARY_DIR = /Users/edisonshen/documents/hawkeye/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Hawkeye.dir/depend.make
@@ -69,76 +69,76 @@ include CMakeFiles/Hawkeye.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Hawkeye.dir/flags.make
 
-CMakeFiles/Hawkeye.dir/Hawkeye.cpp.o: CMakeFiles/Hawkeye.dir/flags.make
-CMakeFiles/Hawkeye.dir/Hawkeye.cpp.o: /Users/edisonshen/Documents/hawkeye/Hawkeye.cpp
-CMakeFiles/Hawkeye.dir/Hawkeye.cpp.o: CMakeFiles/Hawkeye.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/edisonshen/Documents/hawkeye/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Hawkeye.dir/Hawkeye.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Hawkeye.dir/Hawkeye.cpp.o -MF CMakeFiles/Hawkeye.dir/Hawkeye.cpp.o.d -o CMakeFiles/Hawkeye.dir/Hawkeye.cpp.o -c /Users/edisonshen/Documents/hawkeye/Hawkeye.cpp
+CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.o: CMakeFiles/Hawkeye.dir/flags.make
+CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.o: /Users/edisonshen/documents/hawkeye/src/Hawkeye.cpp
+CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.o: CMakeFiles/Hawkeye.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/edisonshen/documents/hawkeye/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.o -MF CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.o.d -o CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.o -c /Users/edisonshen/documents/hawkeye/src/Hawkeye.cpp
 
-CMakeFiles/Hawkeye.dir/Hawkeye.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Hawkeye.dir/Hawkeye.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/edisonshen/Documents/hawkeye/Hawkeye.cpp > CMakeFiles/Hawkeye.dir/Hawkeye.cpp.i
+CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/edisonshen/documents/hawkeye/src/Hawkeye.cpp > CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.i
 
-CMakeFiles/Hawkeye.dir/Hawkeye.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Hawkeye.dir/Hawkeye.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/edisonshen/Documents/hawkeye/Hawkeye.cpp -o CMakeFiles/Hawkeye.dir/Hawkeye.cpp.s
+CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/edisonshen/documents/hawkeye/src/Hawkeye.cpp -o CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.s
 
-CMakeFiles/Hawkeye.dir/RobotTracker.cpp.o: CMakeFiles/Hawkeye.dir/flags.make
-CMakeFiles/Hawkeye.dir/RobotTracker.cpp.o: /Users/edisonshen/Documents/hawkeye/RobotTracker.cpp
-CMakeFiles/Hawkeye.dir/RobotTracker.cpp.o: CMakeFiles/Hawkeye.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/edisonshen/Documents/hawkeye/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Hawkeye.dir/RobotTracker.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Hawkeye.dir/RobotTracker.cpp.o -MF CMakeFiles/Hawkeye.dir/RobotTracker.cpp.o.d -o CMakeFiles/Hawkeye.dir/RobotTracker.cpp.o -c /Users/edisonshen/Documents/hawkeye/RobotTracker.cpp
+CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.o: CMakeFiles/Hawkeye.dir/flags.make
+CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.o: /Users/edisonshen/documents/hawkeye/src/RobotTracker.cpp
+CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.o: CMakeFiles/Hawkeye.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/edisonshen/documents/hawkeye/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.o -MF CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.o.d -o CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.o -c /Users/edisonshen/documents/hawkeye/src/RobotTracker.cpp
 
-CMakeFiles/Hawkeye.dir/RobotTracker.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Hawkeye.dir/RobotTracker.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/edisonshen/Documents/hawkeye/RobotTracker.cpp > CMakeFiles/Hawkeye.dir/RobotTracker.cpp.i
+CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/edisonshen/documents/hawkeye/src/RobotTracker.cpp > CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.i
 
-CMakeFiles/Hawkeye.dir/RobotTracker.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Hawkeye.dir/RobotTracker.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/edisonshen/Documents/hawkeye/RobotTracker.cpp -o CMakeFiles/Hawkeye.dir/RobotTracker.cpp.s
+CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/edisonshen/documents/hawkeye/src/RobotTracker.cpp -o CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.s
 
-CMakeFiles/Hawkeye.dir/TargetMap.cpp.o: CMakeFiles/Hawkeye.dir/flags.make
-CMakeFiles/Hawkeye.dir/TargetMap.cpp.o: /Users/edisonshen/Documents/hawkeye/TargetMap.cpp
-CMakeFiles/Hawkeye.dir/TargetMap.cpp.o: CMakeFiles/Hawkeye.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/edisonshen/Documents/hawkeye/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Hawkeye.dir/TargetMap.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Hawkeye.dir/TargetMap.cpp.o -MF CMakeFiles/Hawkeye.dir/TargetMap.cpp.o.d -o CMakeFiles/Hawkeye.dir/TargetMap.cpp.o -c /Users/edisonshen/Documents/hawkeye/TargetMap.cpp
+CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.o: CMakeFiles/Hawkeye.dir/flags.make
+CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.o: /Users/edisonshen/documents/hawkeye/src/TargetMap.cpp
+CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.o: CMakeFiles/Hawkeye.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/edisonshen/documents/hawkeye/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.o -MF CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.o.d -o CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.o -c /Users/edisonshen/documents/hawkeye/src/TargetMap.cpp
 
-CMakeFiles/Hawkeye.dir/TargetMap.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Hawkeye.dir/TargetMap.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/edisonshen/Documents/hawkeye/TargetMap.cpp > CMakeFiles/Hawkeye.dir/TargetMap.cpp.i
+CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/edisonshen/documents/hawkeye/src/TargetMap.cpp > CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.i
 
-CMakeFiles/Hawkeye.dir/TargetMap.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Hawkeye.dir/TargetMap.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/edisonshen/Documents/hawkeye/TargetMap.cpp -o CMakeFiles/Hawkeye.dir/TargetMap.cpp.s
+CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/edisonshen/documents/hawkeye/src/TargetMap.cpp -o CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.s
 
-CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.o: CMakeFiles/Hawkeye.dir/flags.make
-CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.o: /Users/edisonshen/Documents/hawkeye/TrackedTarget.cpp
-CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.o: CMakeFiles/Hawkeye.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/edisonshen/Documents/hawkeye/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.o -MF CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.o.d -o CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.o -c /Users/edisonshen/Documents/hawkeye/TrackedTarget.cpp
+CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.o: CMakeFiles/Hawkeye.dir/flags.make
+CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.o: /Users/edisonshen/documents/hawkeye/src/TrackedTarget.cpp
+CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.o: CMakeFiles/Hawkeye.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/edisonshen/documents/hawkeye/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.o -MF CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.o.d -o CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.o -c /Users/edisonshen/documents/hawkeye/src/TrackedTarget.cpp
 
-CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/edisonshen/Documents/hawkeye/TrackedTarget.cpp > CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.i
+CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/edisonshen/documents/hawkeye/src/TrackedTarget.cpp > CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.i
 
-CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/edisonshen/Documents/hawkeye/TrackedTarget.cpp -o CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.s
+CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/edisonshen/documents/hawkeye/src/TrackedTarget.cpp -o CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.s
 
 # Object files for target Hawkeye
 Hawkeye_OBJECTS = \
-"CMakeFiles/Hawkeye.dir/Hawkeye.cpp.o" \
-"CMakeFiles/Hawkeye.dir/RobotTracker.cpp.o" \
-"CMakeFiles/Hawkeye.dir/TargetMap.cpp.o" \
-"CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.o"
+"CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.o" \
+"CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.o" \
+"CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.o" \
+"CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.o"
 
 # External object files for target Hawkeye
 Hawkeye_EXTERNAL_OBJECTS =
 
-Hawkeye: CMakeFiles/Hawkeye.dir/Hawkeye.cpp.o
-Hawkeye: CMakeFiles/Hawkeye.dir/RobotTracker.cpp.o
-Hawkeye: CMakeFiles/Hawkeye.dir/TargetMap.cpp.o
-Hawkeye: CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.o
+Hawkeye: CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.o
+Hawkeye: CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.o
+Hawkeye: CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.o
+Hawkeye: CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.o
 Hawkeye: CMakeFiles/Hawkeye.dir/build.make
 Hawkeye: /usr/local/lib/libgtsam.4.3a0.dylib
 Hawkeye: /opt/homebrew/lib/libopencv_gapi.4.10.0.dylib
@@ -209,7 +209,7 @@ Hawkeye: /opt/homebrew/lib/libopencv_photo.4.10.0.dylib
 Hawkeye: /opt/homebrew/lib/libopencv_imgproc.4.10.0.dylib
 Hawkeye: /opt/homebrew/lib/libopencv_core.4.10.0.dylib
 Hawkeye: CMakeFiles/Hawkeye.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/edisonshen/Documents/hawkeye/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Hawkeye"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/edisonshen/documents/hawkeye/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Hawkeye"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Hawkeye.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -221,6 +221,6 @@ CMakeFiles/Hawkeye.dir/clean:
 .PHONY : CMakeFiles/Hawkeye.dir/clean
 
 CMakeFiles/Hawkeye.dir/depend:
-	cd /Users/edisonshen/Documents/hawkeye/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/edisonshen/Documents/hawkeye /Users/edisonshen/Documents/hawkeye /Users/edisonshen/Documents/hawkeye/build /Users/edisonshen/Documents/hawkeye/build /Users/edisonshen/Documents/hawkeye/build/CMakeFiles/Hawkeye.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/edisonshen/documents/hawkeye/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/edisonshen/documents/hawkeye /Users/edisonshen/documents/hawkeye /Users/edisonshen/documents/hawkeye/build /Users/edisonshen/documents/hawkeye/build /Users/edisonshen/documents/hawkeye/build/CMakeFiles/Hawkeye.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/Hawkeye.dir/depend
 

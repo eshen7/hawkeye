@@ -21,7 +21,7 @@ find_package(OpenCV REQUIRED)
 
 add_definitions(-DOPENCV_DISABLE_EIGEN_TENSOR_SUPPORT)
 
-add_executable(${PROJECT_NAME} Hawkeye.cpp RobotTracker.cpp TargetMap.cpp TrackedTarget.cpp)
+add_executable(${PROJECT_NAME} src/Hawkeye.cpp src/RobotTracker.cpp src/TargetMap.cpp src/TrackedTarget.cpp)
 
 target_link_libraries(${PROJECT_NAME} gtsam)
 target_link_libraries(${PROJECT_NAME} ${GST_LIBRARIES})

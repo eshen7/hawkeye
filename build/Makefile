@@ -57,10 +57,10 @@ RM = /opt/homebrew/Cellar/cmake/3.30.2/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/edisonshen/Documents/hawkeye
+CMAKE_SOURCE_DIR = /Users/edisonshen/documents/hawkeye
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/edisonshen/Documents/hawkeye/build
+CMAKE_BINARY_DIR = /Users/edisonshen/documents/hawkeye/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,9 +132,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/edisonshen/Documents/hawkeye/build/CMakeFiles /Users/edisonshen/Documents/hawkeye/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/edisonshen/documents/hawkeye/build/CMakeFiles /Users/edisonshen/documents/hawkeye/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/edisonshen/Documents/hawkeye/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/edisonshen/documents/hawkeye/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -174,101 +174,101 @@ Hawkeye/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/build
 .PHONY : Hawkeye/fast
 
-Hawkeye.o: Hawkeye.cpp.o
-.PHONY : Hawkeye.o
+src/Hawkeye.o: src/Hawkeye.cpp.o
+.PHONY : src/Hawkeye.o
 
 # target to build an object file
-Hawkeye.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/Hawkeye.cpp.o
-.PHONY : Hawkeye.cpp.o
+src/Hawkeye.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.o
+.PHONY : src/Hawkeye.cpp.o
 
-Hawkeye.i: Hawkeye.cpp.i
-.PHONY : Hawkeye.i
+src/Hawkeye.i: src/Hawkeye.cpp.i
+.PHONY : src/Hawkeye.i
 
 # target to preprocess a source file
-Hawkeye.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/Hawkeye.cpp.i
-.PHONY : Hawkeye.cpp.i
+src/Hawkeye.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.i
+.PHONY : src/Hawkeye.cpp.i
 
-Hawkeye.s: Hawkeye.cpp.s
-.PHONY : Hawkeye.s
+src/Hawkeye.s: src/Hawkeye.cpp.s
+.PHONY : src/Hawkeye.s
 
 # target to generate assembly for a file
-Hawkeye.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/Hawkeye.cpp.s
-.PHONY : Hawkeye.cpp.s
+src/Hawkeye.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.s
+.PHONY : src/Hawkeye.cpp.s
 
-RobotTracker.o: RobotTracker.cpp.o
-.PHONY : RobotTracker.o
+src/RobotTracker.o: src/RobotTracker.cpp.o
+.PHONY : src/RobotTracker.o
 
 # target to build an object file
-RobotTracker.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/RobotTracker.cpp.o
-.PHONY : RobotTracker.cpp.o
+src/RobotTracker.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.o
+.PHONY : src/RobotTracker.cpp.o
 
-RobotTracker.i: RobotTracker.cpp.i
-.PHONY : RobotTracker.i
+src/RobotTracker.i: src/RobotTracker.cpp.i
+.PHONY : src/RobotTracker.i
 
 # target to preprocess a source file
-RobotTracker.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/RobotTracker.cpp.i
-.PHONY : RobotTracker.cpp.i
+src/RobotTracker.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.i
+.PHONY : src/RobotTracker.cpp.i
 
-RobotTracker.s: RobotTracker.cpp.s
-.PHONY : RobotTracker.s
+src/RobotTracker.s: src/RobotTracker.cpp.s
+.PHONY : src/RobotTracker.s
 
 # target to generate assembly for a file
-RobotTracker.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/RobotTracker.cpp.s
-.PHONY : RobotTracker.cpp.s
+src/RobotTracker.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/src/RobotTracker.cpp.s
+.PHONY : src/RobotTracker.cpp.s
 
-TargetMap.o: TargetMap.cpp.o
-.PHONY : TargetMap.o
+src/TargetMap.o: src/TargetMap.cpp.o
+.PHONY : src/TargetMap.o
 
 # target to build an object file
-TargetMap.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/TargetMap.cpp.o
-.PHONY : TargetMap.cpp.o
+src/TargetMap.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.o
+.PHONY : src/TargetMap.cpp.o
 
-TargetMap.i: TargetMap.cpp.i
-.PHONY : TargetMap.i
+src/TargetMap.i: src/TargetMap.cpp.i
+.PHONY : src/TargetMap.i
 
 # target to preprocess a source file
-TargetMap.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/TargetMap.cpp.i
-.PHONY : TargetMap.cpp.i
+src/TargetMap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.i
+.PHONY : src/TargetMap.cpp.i
 
-TargetMap.s: TargetMap.cpp.s
-.PHONY : TargetMap.s
+src/TargetMap.s: src/TargetMap.cpp.s
+.PHONY : src/TargetMap.s
 
 # target to generate assembly for a file
-TargetMap.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/TargetMap.cpp.s
-.PHONY : TargetMap.cpp.s
+src/TargetMap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/src/TargetMap.cpp.s
+.PHONY : src/TargetMap.cpp.s
 
-TrackedTarget.o: TrackedTarget.cpp.o
-.PHONY : TrackedTarget.o
+src/TrackedTarget.o: src/TrackedTarget.cpp.o
+.PHONY : src/TrackedTarget.o
 
 # target to build an object file
-TrackedTarget.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.o
-.PHONY : TrackedTarget.cpp.o
+src/TrackedTarget.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.o
+.PHONY : src/TrackedTarget.cpp.o
 
-TrackedTarget.i: TrackedTarget.cpp.i
-.PHONY : TrackedTarget.i
+src/TrackedTarget.i: src/TrackedTarget.cpp.i
+.PHONY : src/TrackedTarget.i
 
 # target to preprocess a source file
-TrackedTarget.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.i
-.PHONY : TrackedTarget.cpp.i
+src/TrackedTarget.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.i
+.PHONY : src/TrackedTarget.cpp.i
 
-TrackedTarget.s: TrackedTarget.cpp.s
-.PHONY : TrackedTarget.s
+src/TrackedTarget.s: src/TrackedTarget.cpp.s
+.PHONY : src/TrackedTarget.s
 
 # target to generate assembly for a file
-TrackedTarget.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/TrackedTarget.cpp.s
-.PHONY : TrackedTarget.cpp.s
+src/TrackedTarget.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hawkeye.dir/build.make CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.s
+.PHONY : src/TrackedTarget.cpp.s
 
 # Help Target
 help:
@@ -283,18 +283,18 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... Hawkeye"
-	@echo "... Hawkeye.o"
-	@echo "... Hawkeye.i"
-	@echo "... Hawkeye.s"
-	@echo "... RobotTracker.o"
-	@echo "... RobotTracker.i"
-	@echo "... RobotTracker.s"
-	@echo "... TargetMap.o"
-	@echo "... TargetMap.i"
-	@echo "... TargetMap.s"
-	@echo "... TrackedTarget.o"
-	@echo "... TrackedTarget.i"
-	@echo "... TrackedTarget.s"
+	@echo "... src/Hawkeye.o"
+	@echo "... src/Hawkeye.i"
+	@echo "... src/Hawkeye.s"
+	@echo "... src/RobotTracker.o"
+	@echo "... src/RobotTracker.i"
+	@echo "... src/RobotTracker.s"
+	@echo "... src/TargetMap.o"
+	@echo "... src/TargetMap.i"
+	@echo "... src/TargetMap.s"
+	@echo "... src/TrackedTarget.o"
+	@echo "... src/TrackedTarget.i"
+	@echo "... src/TrackedTarget.s"
 .PHONY : help
 
 
