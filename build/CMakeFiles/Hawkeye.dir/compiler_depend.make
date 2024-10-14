@@ -1235,6 +1235,8 @@ CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.o: ../src/Hawkeye.cpp \
   /usr/local/include/ntcore/networktables/NetworkTableInstance.inc \
   /usr/local/include/ntcore/networktables/DoubleArrayTopic.h \
   /usr/local/include/ntcore/networktables/DoubleArrayTopic.inc \
+  /usr/local/include/ntcore/networktables/BooleanTopic.h \
+  /usr/local/include/ntcore/networktables/BooleanTopic.inc \
   /usr/local/include/ntcore/ntcore.h \
   ../src/TrackedTarget.h \
   /usr/include/gtsam/geometry/Pose3.h \
@@ -8128,8 +8130,6 @@ CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.o: ../src/TrackedTarget.cpp \
 
 /usr/include/boost/algorithm/string/compare.hpp:
 
-/usr/include/boost/algorithm/string/constants.hpp:
-
 /usr/include/boost/algorithm/string/detail/find_format_all.hpp:
 
 /usr/include/boost/algorithm/string/sequence_traits.hpp:
@@ -9018,17 +9018,23 @@ CMakeFiles/Hawkeye.dir/src/TrackedTarget.cpp.o: ../src/TrackedTarget.cpp \
 
 /usr/include/c++/11/bits/random.h:
 
+/usr/include/gtsam/geometry/BearingRange.h:
+
+/usr/include/gtsam/geometry/Pose3.h:
+
+/usr/local/include/ntcore/ntcore.h:
+
 /usr/include/boost/date_time/gregorian/greg_calendar.hpp:
 
 /usr/include/boost/ptr_container/detail/throw_exception.hpp:
 
 /usr/include/gtsam/geometry/Unit3.h:
 
-/usr/include/gtsam/geometry/BearingRange.h:
+/usr/local/include/ntcore/networktables/BooleanTopic.inc:
 
-/usr/include/gtsam/geometry/Pose3.h:
+/usr/include/boost/algorithm/string/constants.hpp:
 
-/usr/local/include/ntcore/ntcore.h:
+/usr/local/include/ntcore/networktables/BooleanTopic.h:
 
 /usr/include/boost/date_time/gregorian/greg_weekday.hpp:
 

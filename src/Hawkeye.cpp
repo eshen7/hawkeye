@@ -4,13 +4,17 @@
 #include <opencv4/opencv2/opencv.hpp>
 #include <opencv4/opencv2/core/eigen.hpp>
 #include <opencv4/opencv2/objdetect/aruco_detector.hpp>
+#include <ntcore/networktables/NetworkTableInstance.h>
+#include <ntcore/networktables/DoubleArrayTopic.h>
+#include <ntcore/networktables/BooleanTopic.h>
+#include <ntcore/ntcore.h>
 #include "TrackedTarget.h"
 #include "RobotTracker.h"
 
 using namespace cv;
 using namespace std;
 using namespace gtsam;
-
+using namespace nt;
 
 std::tuple<Mat, Mat> loadCameraModel(const std::string &path)
 {
@@ -171,11 +175,11 @@ Pose3 tvecrvecToPoseNeg(const std::vector<double> &tvec, const std::vector<doubl
 
 int main()
 {
-    int deviceID = 0;
+    int deviceID = 2;
     double markerLengthMeters = 0.1651;
-    std::string camModelPath = "test.json";
-    std::string outputPath = "output.json";
-    std::string tagMapPath = "2024-crescendo.json";
+    std::string camModelPath = "./../json/test.json";
+    std::string outputPath = "./../json/output.json";
+    std::string tagMapPath = "./../json/2024-crescendo.json";
     std::ofstream outputJson(outputPath);
     if (!outputJson.is_open()) {
         cerr << "Could not open output JSON file" << endl;
@@ -223,7 +227,17 @@ int main()
     int tagCount = 0;
     nlohmann::json tagJson;
     tagJson["tags"] = nlohmann::json::array();
-    while (!tracker.ids.count(3)) // exit when tag with id 3 is detected
+    // networktables
+    NetworkTableInstance defaultInst = nt::NetworkTableInstance::GetDefault();
+    auto table = defaultInst.GetTable("hawkeye");
+    BooleanTopic enabledTopic = table->GetBooleanTopic("enabled");
+    DoubleArrayTopic poseTopic = table->GetDoubleArrayTopic("pose");
+    BooleanSubscriber enabledSub = enabledTopic.Subscribe(true);
+    DoubleArrayPublisher posePub = poseTopic.Publish({.keepDuplicates = true});
+    defaultInst.StartClient4("hawkeye");
+    defaultInst.SetServerTeam(3647);
+    bool lastEnabled = true;
+    while (true)
     {
         count++;
         Mat frame;
@@ -314,7 +328,7 @@ int main()
                 }
             }
             // perform incremental optimization and clear factor graph for next iteration
-                tracker.updateInformation();
+            tracker.updateInformation();
         }
         // write all data to output json
         for (pair<int, TrackedTarget> target : tracker.tagMap.targets)
@@ -328,6 +342,9 @@ int main()
             tagJson["tags"][tagCount]["apriltagZ"] = target.second.getPose().z();
             tagCount++;
         }
+        double pose[3] = {tracker.getPose().x(), tracker.getPose().y(), tracker.getPose().rotation().yaw()};
+        int64_t time = Now();
+        posePub.Set(pose, time);
         Pose3 robotToOrigin = tracker.getPose().transformPoseTo(Pose3());
         auto [tvec2, rvec2] = poseTotvecrvec(&robotToOrigin);
         drawAxes(viz, rvec2, tvec2, cameraMatrix, distCoeffs);
@@ -345,7 +362,12 @@ int main()
         markerIds.clear();
         unknownId = -1;
         tagCount = 0;
+        if (enabledSub.Get() == false && lastEnabled == true) {
+            outputJson << outputData.dump(4) << "\n";
+            outputData.clear();
+            outputData["samples"] = nlohmann::json::array();
+        }
+        lastEnabled = enabledSub.Get();
     }
-    outputJson << outputData.dump(4) << "\n";
     destroyAllWindows();
 }

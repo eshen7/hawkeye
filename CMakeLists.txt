@@ -18,6 +18,7 @@ include_directories(
 
 find_package(GTSAM REQUIRED)
 find_package(OpenCV REQUIRED)
+find_package(wpilibc REQUIRED)
 
 add_definitions(-DOPENCV_DISABLE_EIGEN_TENSOR_SUPPORT)
 
@@ -26,5 +27,6 @@ add_executable(${PROJECT_NAME} src/Hawkeye.cpp src/RobotTracker.cpp src/TargetMa
 target_link_libraries(${PROJECT_NAME} gtsam)
 target_link_libraries(${PROJECT_NAME} ${GST_LIBRARIES})
 target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
+target_link_libraries(${PROJECT_NAME} ntcore wpilibc)
 
 INSTALL(TARGETS ${PROJECT_NAME} DESTINATION bin)

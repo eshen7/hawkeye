@@ -1236,6 +1236,8 @@ CMakeFiles/Hawkeye.dir/src/Hawkeye.cpp.o
  /usr/local/include/ntcore/networktables/NetworkTableInstance.inc
  /usr/local/include/ntcore/networktables/DoubleArrayTopic.h
  /usr/local/include/ntcore/networktables/DoubleArrayTopic.inc
+ /usr/local/include/ntcore/networktables/BooleanTopic.h
+ /usr/local/include/ntcore/networktables/BooleanTopic.inc
  /usr/local/include/ntcore/ntcore.h
  /home/eggy/Documents/hawkeye/src/TrackedTarget.h
  /usr/include/gtsam/geometry/Pose3.h
