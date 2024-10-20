@@ -20,8 +20,8 @@ $ make
 WIP
 
 ### Important Installation Notes
-Hawkeye requires the following libraries to be installed on your system:
-OpenCV 4.10.0
-CMake 3.22.1 or greater
-GTSAM 4.0 or greater
+Hawkeye requires the following libraries to be installed on your system: <br/>
+OpenCV 4.10.0 <br/>
+CMake 3.22.1 or greater <br/>
+GTSAM 4.0 or greater <br/>
 allwpilib 2024.3.2
