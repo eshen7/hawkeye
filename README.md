@@ -10,12 +10,12 @@ Hawkeye outputs all pose data per iteration to a JSON file that is replayable th
 ## Usage
 In the root folder execute:
 
-'''
+```
 $ mkdir build
 $ cd build
 $ cmake ..
 $ make
-'''
+```
 
 WIP
 
