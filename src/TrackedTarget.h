@@ -9,15 +9,18 @@
 
 using namespace gtsam;
 
-class TrackedTarget
-{
+class TrackedTarget {
 private:
 public:
     int id;
     Pose3 priorPose;
+
     TrackedTarget();
+
     TrackedTarget(int id, const Pose3 *priorPose);
+
     void update(const Pose3 *pose);
+
     Pose3 getPose() const;
 };
 #endif

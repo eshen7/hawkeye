@@ -1,0 +1,31 @@
+{
+  "modules": [
+    {
+      "front_left": {
+        "drive": 1,
+        "steer": 2
+      },
+      "front_right": {
+        "drive": 3,
+        "steer": 4
+      },
+      "back_left": {
+        "drive": 5,
+        "steer": 6
+      },
+      "back_right": {
+        "drive": 7,
+        "steer": 8
+      }
+    }
+  ],
+  "encoders": [
+    {
+      "front_left": 9,
+      "front_right": 10,
+      "back_left": 11,
+      "back_right": 12
+    }
+  ],
+  "pigeon": 16
+}

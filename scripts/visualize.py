@@ -25,17 +25,20 @@ ax.set_zlim(min(z_data) - 0.2, max(z_data) + 0.2)
 # Initialize the plot with an empty line
 line, = ax.plot([], [], [], lw=2)
 
+
 # Function to initialize the plot
 def init():
     line.set_data([], [])
     line.set_3d_properties([])
     return line,
 
+
 # Function to update the plot at each frame
 def update(frame):
     line.set_data(x_data[:frame], y_data[:frame])
     line.set_3d_properties(z_data[:frame])
     return line,
+
 
 # Create the animation
 ani = FuncAnimation(fig, update, frames=len(x_data), init_func=init, blit=True, interval=5)
