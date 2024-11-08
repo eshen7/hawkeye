@@ -26,6 +26,7 @@ ax.set_ylabel('Y Position')
 ax.set_zlabel('Z Position')
 ax.set_title('Robot and AprilTag Positions Replay (3D)')
 
+
 # Function to plot the current state of the robot and AprilTags in 3D
 def update_frame(i):
     # Clear the previous frame
@@ -48,7 +49,8 @@ def update_frame(i):
     robot_y = sample["robotPoseY"]
     robot_z = sample["robotPoseZ"]
     ax.scatter(robot_x, robot_y, robot_z, color='blue', s=100, zorder=2)
-    ax.text(robot_x, robot_y, robot_z, f'Robot\n({robot_x:.2f}, {robot_y:.2f}, {robot_z:.2f})', fontsize=8, color='blue', zorder=3)
+    ax.text(robot_x, robot_y, robot_z, f'Robot\n({robot_x:.2f}, {robot_y:.2f}, {robot_z:.2f})', fontsize=8,
+            color='blue', zorder=3)
 
     # Plot the tags detected in this frame in 3D
     for tag in sample["tags"]:
@@ -57,6 +59,7 @@ def update_frame(i):
         tag_z = tag["apriltagZ"]
         ax.scatter(tag_x, tag_y, tag_z, color='red', s=50, zorder=1)
         ax.text(tag_x, tag_y, tag_z, f'Tag {tag["apriltagId"]}', fontsize=8, color='red', zorder=3)
+
 
 # Create an animation that updates the plot
 ani = FuncAnimation(fig, update_frame, frames=len(data["samples"]), interval=5)
